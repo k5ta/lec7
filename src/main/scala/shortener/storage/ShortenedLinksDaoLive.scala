@@ -6,6 +6,8 @@ import zio._
 
 import java.util.concurrent.ConcurrentHashMap
 
+// да, у нас тупая имплементация с in-memory хранилкой.
+// В реальном мире такое, конечно, нужно, но явно не как основное хранилище для исходной задачи
 class ShortenedLinksDaoLive(storageController: ConcurrentHashMap[UrlHash, OriginUrl]) extends ShortenedLinksDao {
 
   override def putIfAbsent(params: ShortenedUrlParams): IO[ShortenedLinksDaoError, OriginUrl] = {
